@@ -1,0 +1,43 @@
+options:
+  arista-version:
+    default: '2017.2.2'
+    type: string
+    description: Arista Driver version
+  pip-proxy:
+    type: string
+    default: None
+    description: Proxy address to install python modules behind a proxy.
+  eapi-host:
+    default:
+    type: string
+    description: |
+      Set a comma separated list of IP addresses for each CVX instance.
+      If CVX has been deployed in a highly available (HA) cluster,
+      specify each instance IP separated by a comma.
+  eapi-username:
+    default:
+    type: string
+    description: EOS command API username. This is required field.
+  eapi-password:
+    default:
+    type: string
+    description: EOS command API password. This is required field.
+  api-type:
+    default: EAPI
+    type: string
+    description: |
+      Tells the plugin to use a sepcific API interfaces to communicate
+      with CVX. Valid options are:
+      .
+      EAPI - Use EOS extensible API.
+      JSON - Use EOS JSON/REST API.
+      .
+  region-name:
+    default: RegionOne
+    type: string
+    description: |
+      Name of the OpenStack region.
+  service-plugins:
+    default: router,firewall,metering,neutron_lbaas.services.loadbalancer.plugin.LoadBalancerPluginv2
+    type: string
+    description: Override of Neutron-API service plugins setting.

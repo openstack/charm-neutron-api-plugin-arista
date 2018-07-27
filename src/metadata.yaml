@@ -1,0 +1,19 @@
+name: neutron-arista
+summary: Arista ML2 plugin support for Neutron-API
+maintainer: Michael Skalka <Michael.Skalka@canonical.com>
+description: |
+
+tags:
+  - misc
+  - networking
+subordinate: true
+series:
+  - xenial
+provides:
+  neutron-arista:
+    interface: neutron-plugin-api-subordinate
+    scope: container
+requires:
+  container:
+    interface: juju-info
+    scope: container
