@@ -18,7 +18,9 @@ from charms_openstack.charm import (
     provide_charm_instance,
     use_defaults,
 )
-import charm.openstack.keystone_ico as ico  # noqa
+import charm.openstack.neutron_arista as arista  # noqa
+
+from charm.openstack.neutron_arista import register_configs
 
 CONFIGS = register_configs()
 
@@ -35,8 +37,6 @@ def install_neutron_arista():
 @reactive.when('neutron-plugin-api-subordinate.connected')
 @reactive.when('neutron-arista.installed')
 def configure_principle(api_principle):
-    with provide_charm_instance() as charm_class:
-        charm_class.render_ml2_conf()
     injet_config = {
         'neutron-api': {
             '/etc/neutron/neutron.conf': {
@@ -47,6 +47,7 @@ def configure_principle(api_principle):
             }
         }
     }
+    CONFIGS.write_all()
     api_principle.configure_plugin(
         neutron_plugin='arista',
         core_plugin='neutron.plugins.ml2.plugin.Ml2Plugin',

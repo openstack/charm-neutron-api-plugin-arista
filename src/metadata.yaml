@@ -10,7 +10,7 @@ subordinate: true
 series:
   - xenial
 provides:
-  neutron-arista:
+  neutron-plugin-api-subordinate:
     interface: neutron-plugin-api-subordinate
     scope: container
 requires:

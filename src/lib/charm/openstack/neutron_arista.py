@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import subprocess
 
+from collections import OrderedDict
+
 import charmhelpers.core.hookenv as hookenv
 from charmhelpers.core.hookenv import (
     config,
@@ -14,13 +16,16 @@ import charms_openstack.charm
 
 from charmhelpers.contrib.python.packages import pip_install
 
-from charmhelpers.contrib.openstack import context
+from charmhelpers.contrib.openstack import (
+    context,
+    templating,
+)
 from charmhelpers.contrib.openstack.utils import (
     CompareOpenStackReleases,
     os_release,
 )
 
-ML2_CONFIG_ARISTA = '/etc/neutron/plugins/ml2/ml2_conf_arista.ini'
+ML2_CONFIG = '/etc/neutron/plugins/ml2/ml2_conf_arista.ini'
 TEMPLATES = 'templates/'
 
 
@@ -38,11 +43,7 @@ class NeutronAristaCharm(charms_openstack.charm.OpenStackCharm):
     def install(self):
         package_version = config('arista-version')
         package_name = 'networking-arista==%s' % package_version
-        proxy = config('pip-proxy')
-        if proxy:
-            pip_install(package_name, fatal=True, proxy=proxy)
-        else:
-            pip_install(package_name, fatal=True)
+        pip_install(package_name, fatal=True)
         status_set('active', 'Unit is ready')
 
 
@@ -64,14 +65,10 @@ def register_configs(release=None):
             'services': ['neutron-server'],
             'contexts': [AristaMl2Context(), ]
         }),
-        (ML2_CONFIG_ARISTA, {
-            'services': ['neutron-server'],
-            'contexts': [AristaMl2Context(), ]
-        }),
     ])
     release = os_release('neutron-common')
     configs = templating.OSConfigRenderer(templates_dir=TEMPLATES,
                                           openstack_release=release)
-    for cfg, rscs in resources.iteritems():
+    for cfg, rscs in resources.items():
         configs.register(cfg, rscs['contexts'])
     return configs

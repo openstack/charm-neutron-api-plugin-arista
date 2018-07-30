@@ -3,10 +3,6 @@ options:
     default: '2017.2.2'
     type: string
     description: Arista Driver version
-  pip-proxy:
-    type: string
-    default: None
-    description: Proxy address to install python modules behind a proxy.
   eapi-host:
     default:
     type: string
