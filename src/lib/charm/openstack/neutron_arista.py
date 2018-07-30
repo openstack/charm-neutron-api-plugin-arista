@@ -35,14 +35,7 @@ class NeutronAristaCharm(charms_openstack.charm.OpenStackCharm):
     release = 'queens'
 
     # List of packages to install for this charm
-    packages = ['']
-
-    def install(self):
-        package_version = config('arista-version')
-        package_name = 'networking-arista==%s' % package_version
-        log('Installing {}'.format(package_name))
-        pip_install(package_name, fatal=True)
-        status_set('active', 'Unit is ready')
+    packages = ['python-networking-arista']
 
 
 class AristaMl2Context(context.OSContextGenerator):

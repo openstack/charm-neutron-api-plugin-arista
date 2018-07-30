@@ -29,15 +29,7 @@ CONFIGS = register_configs()
 use_defaults('update-status')
 
 
-@reactive.when_not('neutron-arista.installed')
-def install_neutron_arista():
-    with provide_charm_instance() as charm_class:
-        charm_class.install()
-    reactive.set_state('neutron-arista.installed')
-
-
 @reactive.when('neutron-plugin-api-subordinate.connected')
-@reactive.when('neutron-arista.installed')
 def configure_principle(api_principle):
     inject_config = {
         'neutron-api': {
@@ -56,4 +48,3 @@ def configure_principle(api_principle):
         neutron_plugin_config='/etc/neutron/plugins/ml2/ml2_conf_arista.ini',
         service_plugins=config('service-plugins'),
         subordinate_configuration=inject_config)
-    api_principle.request_restart(service_type='neutron-server')
