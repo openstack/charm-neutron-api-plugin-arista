@@ -8,9 +8,6 @@ from charmhelpers.core.hookenv import (
     config,
     log,
     status_set,
-    is_leader,
-    leader_get,
-    leader_set,
 )
 import charms_openstack.charm
 
@@ -43,6 +40,7 @@ class NeutronAristaCharm(charms_openstack.charm.OpenStackCharm):
     def install(self):
         package_version = config('arista-version')
         package_name = 'networking-arista==%s' % package_version
+        log('Installing {}'.format(package_name))
         pip_install(package_name, fatal=True)
         status_set('active', 'Unit is ready')
 

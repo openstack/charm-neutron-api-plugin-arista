@@ -14,12 +14,14 @@
 
 import charms.reactive as reactive
 
+from charmhelpers.core.hookenv import (
+    config,
+)
 from charms_openstack.charm import (
     provide_charm_instance,
     use_defaults,
 )
 import charm.openstack.neutron_arista as arista  # noqa
-
 from charm.openstack.neutron_arista import register_configs
 
 CONFIGS = register_configs()
@@ -37,7 +39,7 @@ def install_neutron_arista():
 @reactive.when('neutron-plugin-api-subordinate.connected')
 @reactive.when('neutron-arista.installed')
 def configure_principle(api_principle):
-    injet_config = {
+    inject_config = {
         'neutron-api': {
             '/etc/neutron/neutron.conf': {
                 'sections': {
