@@ -24,7 +24,6 @@ from charms_openstack.charm import (
 import charm.openstack.neutron_arista as arista  # noqa
 from charm.openstack.neutron_arista import register_configs
 
-CONFIGS = register_configs()
 
 use_defaults('update-status')
 
@@ -41,7 +40,8 @@ def configure_principle(api_principle):
             }
         }
     }
-    CONFIGS.write_all()
+    with provide_charm_instance() as charm_class:
+        charm_class.write_config()
     api_principle.configure_plugin(
         neutron_plugin='arista',
         core_plugin='neutron.plugins.ml2.plugin.Ml2Plugin',

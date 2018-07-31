@@ -37,6 +37,23 @@ class NeutronAristaCharm(charms_openstack.charm.OpenStackCharm):
     # List of packages to install for this charm
     packages = ['python-networking-arista']
 
+    def write_config(self):
+        configs = self.register_configs()
+        configs.write_all()
+
+    def register_configs(release=None):
+        resources = OrderedDict([
+            (ML2_CONFIG, {
+                'services': ['neutron-server'],
+                'contexts': [AristaMl2Context(), ]
+            }),
+        ])
+        release = os_release('neutron-common')
+        configs = templating.OSConfigRenderer(templates_dir=TEMPLATES,
+                                              openstack_release=release)
+        for cfg, rscs in resources.items():
+            configs.register(cfg, rscs['contexts'])
+        return configs
 
 class AristaMl2Context(context.OSContextGenerator):
 
@@ -48,18 +65,3 @@ class AristaMl2Context(context.OSContextGenerator):
                 'api_type': config('api-type'),
                 'arista_version': config('arista-version')}
         return ctxt
-
-
-def register_configs(release=None):
-    resources = OrderedDict([
-        (ML2_CONFIG, {
-            'services': ['neutron-server'],
-            'contexts': [AristaMl2Context(), ]
-        }),
-    ])
-    release = os_release('neutron-common')
-    configs = templating.OSConfigRenderer(templates_dir=TEMPLATES,
-                                          openstack_release=release)
-    for cfg, rscs in resources.items():
-        configs.register(cfg, rscs['contexts'])
-    return configs
