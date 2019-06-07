@@ -15,12 +15,9 @@
 from __future__ import absolute_import
 from __future__ import print_function
 
-import contextlib
 import unittest
 
 import mock
-
-import charm.openstack.neutron_arista as neutron_arista
 
 
 def FakeConfig(init_dict):

@@ -22,7 +22,6 @@ from charms_openstack.charm import (
     use_defaults,
 )
 import charm.openstack.neutron_arista as arista  # noqa
-from charm.openstack.neutron_arista import register_configs
 
 
 use_defaults('update-status')

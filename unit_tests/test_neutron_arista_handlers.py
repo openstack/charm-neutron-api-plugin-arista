@@ -1,6 +1,6 @@
 import mock
 
-import reactive.designate_handlers as handlers
+import reactive.neutron_arista_handlers as handlers
 
 import charms_openstack.test_utils as test_utils
 
@@ -11,13 +11,11 @@ class TestRegisteredHooks(test_utils.TestRegisteredHooks):
         # test that the hooks actually registered the relation expressions that
         # are meaningful for this interface: this is to handle regressions.
         # The keys are the function names that the hook attaches to.
-        all_interfaces = (
-            'neutron-plugin-api-subordinate.connected', )
         hook_set = {
             'when': {
                 'configure_principle': (
                     'neutron-plugin-api-subordinate.connected', ),
-                }
+            }
         }
         # test that the hooks were registered via the
         # reactive.barbican_handlers
@@ -37,5 +35,6 @@ class TestHandlers(test_utils.PatchHelper):
 
     def test_configure_principal(self):
         the_charm = self._patch_provide_charm_instance()
-        handlers.configure_principle('neutron-api')
+        principal_charm = mock.MagicMock()
+        handlers.configure_principle(principal_charm)
         the_charm.write_config.assert_called_once_with()
