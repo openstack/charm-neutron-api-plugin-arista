@@ -1,4 +1,9 @@
 options:
+  source:
+    default: ppa:canonical-arista/queens-stable
+    type: string
+    description: |
+      Repository from which to install. Ex: ppa:canonical-arista/stable
   arista-version:
     default: '2017.2.2'
     type: string

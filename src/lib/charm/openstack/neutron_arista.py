@@ -11,8 +11,6 @@ from charmhelpers.core.hookenv import (
 )
 import charms_openstack.charm
 
-from charmhelpers.contrib.python.packages import pip_install
-
 from charmhelpers.contrib.openstack import (
     context,
     templating,
