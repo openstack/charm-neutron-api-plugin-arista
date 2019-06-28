@@ -26,6 +26,12 @@ import charm.openstack.neutron_arista as arista  # noqa
 
 use_defaults('update-status')
 
+@reactive.when_not('arista-package.installed')
+@reactive.when('neutron-plugin-api-subordinate.available')
+def install_arista():
+    with provide_charm_instance() as charm_class:
+        charm_class.install()
+    reactive.set_state('arista-package.installed')
 
 @reactive.when('neutron-plugin-api-subordinate.connected')
 def configure_principle(api_principle):

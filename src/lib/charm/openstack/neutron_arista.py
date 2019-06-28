@@ -1,11 +1,20 @@
 #!/usr/bin/env python
 from collections import OrderedDict
-from charmhelpers.core.hookenv import config
+from charmhelpers.core.hookenv import (
+    config,
+    log
+)
 import charms_openstack.charm
 
 from charmhelpers.contrib.openstack import (
     context,
     templating,
+)
+from charmhelpers.fetch import (
+    apt_install,
+    apt_update,
+    filter_installed_packages,
+    add_source,
 )
 from charmhelpers.contrib.openstack.utils import os_release
 
@@ -24,6 +33,14 @@ class NeutronAristaCharm(charms_openstack.charm.OpenStackCharm):
 
     # List of packages to install for this charm
     packages = ['python-networking-arista']
+
+    def install(self):
+        log('Starting arista installation')
+        installed = len(filter_installed_packages(self.packages)) == 0
+        if not installed:
+            add_source(config('source'))
+            apt_update(fatal=True)
+            apt_install(self.packages[0], fatal=True)
 
     def write_config(self):
         configs = self.register_configs()
