@@ -15,6 +15,8 @@ class TestRegisteredHooks(test_utils.TestRegisteredHooks):
             'when': {
                 'configure_principle': (
                     'neutron-plugin-api-subordinate.connected', ),
+                'install_arista': (
+                    'neutron-plugin-api-subordinate.available', )
             }
         }
         # test that the hooks were registered via the
