@@ -52,6 +52,7 @@ def configure_principle(api_principle):
     api_principle.configure_plugin(
         neutron_plugin='arista',
         core_plugin='neutron.plugins.ml2.plugin.Ml2Plugin',
-        neutron_plugin_config='/etc/neutron/plugins/ml2/ml2_conf_arista.ini',
+        neutron_plugin_config='/etc/neutron/plugins/ml2/ml2_conf.ini \
+        --config-file=/etc/neutron/plugins/ml2/ml2_conf_arista.ini',
         service_plugins=config('service-plugins'),
         subordinate_configuration=inject_config)
