@@ -1,0 +1,11 @@
+charm_name: neutron-arista
+smoke_bundles:
+- bionic-queens
+gate_bundles:
+- xenial-queens
+- bionic-queens
+- bionic-rocky
+configure:
+- zaza.openstack.charm_tests.neutron_arista.setup.test_fixture
+tests:
+- zaza.openstack.charm_tests.neutron_arista.tests.NeutronCreateAristaNetworkTest
