@@ -17,6 +17,11 @@ import charms.reactive as reactive
 from charmhelpers.core.hookenv import (
     config,
 )
+
+from charmhelpers.core.host import (
+    service_restart,
+)
+
 from charms_openstack.charm import (
     provide_charm_instance,
     use_defaults,
@@ -56,3 +61,12 @@ def configure_principle(api_principle):
         --config-file=/etc/neutron/plugins/ml2/ml2_conf_arista.ini',
         service_plugins=config('service-plugins'),
         subordinate_configuration=inject_config)
+
+
+@reactive.when_any('config.changed.eapi-host',
+                   'config.changed.eapi-username',
+                   'config.changed.eapi-password',
+                   'config.changed.api-type',
+                   'config.changed.region-name')
+def restart_service():
+    service_restart('neutron-server')
