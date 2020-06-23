@@ -13,9 +13,9 @@ To deploy (partial deployment only):
 
     juju deploy neutron-api
     juju deploy neutron-openvswitch
-    juju deploy neutron-arista
+    juju deploy neutron-api-plugin-arista
 
-    juju add-relation neutron-api neutron-arista
+    juju add-relation neutron-api neutron-api-plugin-arista
     juju add-relation neutron-api mysql
     juju add-relation neutron-api rabbitmq-server
     juju add-relation neutron-api neutron-openvswitch

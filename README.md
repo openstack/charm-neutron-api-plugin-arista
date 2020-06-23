@@ -15,7 +15,7 @@ development and testing, however.
 tox -e pep8
 tox -e py3
 tox -e build
-cd build/builds/neutron-arista
+cd build/builds/neutron-api-plugin-arista
 export TEST_ARISTA_IMAGE=/tmp/arista-cvx-virt-test.qcow2
 tox -e func
 ```

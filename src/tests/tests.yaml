@@ -1,4 +1,4 @@
-charm_name: neutron-arista
+charm_name: neutron-api-plugin-arista
 smoke_bundles:
 - bionic-queens
 gate_bundles:

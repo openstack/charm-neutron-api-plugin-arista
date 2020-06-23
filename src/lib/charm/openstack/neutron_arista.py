@@ -26,7 +26,7 @@ TEMPLATES = 'templates/'
 class NeutronAristaCharm(charms_openstack.charm.OpenStackCharm):
 
     # Internal name of charm
-    service_name = name = 'neutron-arista'
+    service_name = name = 'neutron-api-plugin-arista'
 
     # First release supported
     release = 'queens'

@@ -19,7 +19,7 @@ applications:
     num_units: 1
 
   neutron-api:
-    # Temporary fork until we refactor neutron-arista:
+    # Temporary fork until we refactor neutron-api-plugin-arista:
     charm: cs:~aurelien-lourot/neutron-api-arista-test-fixture
     num_units: 1
     options:
@@ -59,8 +59,8 @@ applications:
       openstack-origin: cloud:xenial-queens
       network-manager: Neutron
 
-  neutron-arista:
-    charm: ../../../neutron-arista
+  neutron-api-plugin-arista:
+    charm: ../../../neutron-api-plugin-arista
     num_units: 0
     options:
       # Fake IP, will be set to arista-virt-test-fixture's IP address on test
@@ -140,9 +140,9 @@ relations:
 - - nova-cloud-controller:neutron-api
   - neutron-api:neutron-api
 - - neutron-api
-  - neutron-arista
+  - neutron-api-plugin-arista
 - - neutron-api:neutron-plugin-api-subordinate
-  - neutron-arista:neutron-plugin-api-subordinate
+  - neutron-api-plugin-arista:neutron-plugin-api-subordinate
 - - openstack-dashboard
   - mysql
 - - openstack-dashboard:identity-service

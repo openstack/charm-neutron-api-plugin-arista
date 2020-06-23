@@ -1,4 +1,4 @@
-name: neutron-arista
+name: neutron-api-plugin-arista
 summary: Arista ML2 plugin support for Neutron-API
 maintainer: Michael Skalka <Michael.Skalka@canonical.com>
 description: |
