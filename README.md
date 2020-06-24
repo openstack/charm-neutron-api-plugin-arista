@@ -16,6 +16,12 @@ tox -e pep8
 tox -e py3
 tox -e build
 cd build/builds/neutron-api-plugin-arista
-export TEST_ARISTA_IMAGE=/tmp/arista-cvx-virt-test.qcow2
+
+# Set one of these env vars, depending on whether you want to
+# download the Arista image from a remote place or have it already
+# locally:
+export TEST_ARISTA_IMAGE_REMOTE=http://example.com/swift/v1/images/arista-cvx-virt-test.qcow2
+export TEST_ARISTA_IMAGE_LOCAL=/tmp/arista-cvx-virt-test.qcow2
+
 tox -e func
 ```
