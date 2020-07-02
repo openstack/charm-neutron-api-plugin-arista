@@ -1,6 +1,6 @@
 # Overview
 
-This principle charm provides the Arista ML2 Plugin support to the OpenStack
+This subordinate charm provides the Arista ML2 Plugin support to the OpenStack
 Neutron API service.
 
 When this charm is related to the neutron-api charm it will install the
