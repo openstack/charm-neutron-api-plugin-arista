@@ -25,3 +25,9 @@ export TEST_ARISTA_IMAGE_LOCAL=/tmp/arista-cvx-virt-test.qcow2
 
 tox -e func
 ```
+
+# Bugs
+
+Please report bugs on [Launchpad](https://bugs.launchpad.net/charm-neutron-api-plugin-arista/+filebug).
+
+For general questions please refer to the OpenStack [Charm Guide](https://docs.openstack.org/charm-guide/latest/).

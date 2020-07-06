@@ -20,3 +20,9 @@ To deploy (partial deployment only):
     juju add-relation neutron-api rabbitmq-server
     juju add-relation neutron-api neutron-openvswitch
     juju add-relation neutron-api nova-cloud-controller
+
+# Bugs
+
+Please report bugs on [Launchpad](https://bugs.launchpad.net/charm-neutron-api-plugin-arista/+filebug).
+
+For general questions please refer to the OpenStack [Charm Guide](https://docs.openstack.org/charm-guide/latest/).
