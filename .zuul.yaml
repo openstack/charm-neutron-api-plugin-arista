@@ -1,6 +1,4 @@
 - project:
-    # NOTE(lourot): templates are defined in
-    # https://opendev.org/openstack/openstack-zuul-jobs
     templates:
-      - openstack-python3-ussuri-jobs
+      - openstack-python3-charm-jobs
       - openstack-cover-jobs

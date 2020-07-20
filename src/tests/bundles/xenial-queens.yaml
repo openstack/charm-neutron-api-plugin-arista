@@ -19,12 +19,10 @@ applications:
     num_units: 1
 
   neutron-api:
-    # Temporary fork until we refactor neutron-api-plugin-arista:
-    charm: cs:~aurelien-lourot/neutron-api-arista-test-fixture
+    charm: cs:~openstack-charmers-next/neutron-api
     num_units: 1
     options:
       openstack-origin: cloud:xenial-queens
-      enable-arista: True
       enable-ml2-dns: False
       flat-network-providers: default
       vlan-ranges: default:1000:3000
@@ -40,7 +38,7 @@ applications:
       ipv4-ptr-zone-prefix-size:
       reverse-dns-lookup: False
       dns-domain:
-      manage-neutron-plugin-legacy-mode: True
+      manage-neutron-plugin-legacy-mode: False
 
   neutron-openvswitch:
     charm: cs:~openstack-charmers-next/neutron-openvswitch
@@ -69,7 +67,6 @@ applications:
       eapi-username: admin
       eapi-password: password123
       api-type: EAPI
-      service-plugins: router
 
   nova-compute:
     charm: cs:~openstack-charmers-next/nova-compute

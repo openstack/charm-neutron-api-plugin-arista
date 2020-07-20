@@ -38,7 +38,3 @@ options:
     type: string
     description: |
       Name of the OpenStack region.
-  service-plugins:
-    default: router,firewall,metering,neutron_lbaas.services.loadbalancer.plugin.LoadBalancerPluginv2
-    type: string
-    description: Override of Neutron-API service plugins setting.

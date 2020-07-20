@@ -26,17 +26,40 @@ class TestRegisteredHooks(test_utils.TestRegisteredHooks):
 
 class TestHandlers(test_utils.PatchHelper):
 
-    def _patch_provide_charm_instance(self):
-        the_charm = mock.MagicMock()
-        self.patch_object(handlers, 'provide_charm_instance',
-                          name='provide_charm_instance',
-                          new=mock.MagicMock())
-        self.provide_charm_instance().__enter__.return_value = the_charm
-        self.provide_charm_instance().__exit__.return_value = None
-        return the_charm
-
     def test_configure_principal(self):
-        the_charm = self._patch_provide_charm_instance()
+        mocked_reactive = mock.MagicMock()
+        self.patch_object(handlers, 'reactive',
+                          name='reactive',
+                          new=mocked_reactive)
         principal_charm = mock.MagicMock()
-        handlers.configure_principle(principal_charm)
-        the_charm.write_config.assert_called_once_with()
+        mocked_reactive.endpoint_from_flag.return_value = principal_charm
+        principal_charm.neutron_config_data = {
+            'mechanism_drivers': 'driver1,driver2'
+        }
+
+        mocked_config = mock.MagicMock()
+        self.patch_object(handlers, 'config',
+                          name='config',
+                          new=mocked_config)
+        mocked_config.return_value = 'my_config_value'
+
+        handlers.configure_principle()
+        principal_charm.configure_plugin.assert_called_once_with(
+            neutron_plugin='arista',
+            mechanism_drivers='driver1,driver2,arista',
+            subordinate_configuration={
+                'neutron-api': {
+                    '/etc/neutron/plugins/ml2/ml2_conf.ini': {
+                        'sections': {
+                            'ml2_arista': [
+                                ('eapi_host', 'my_config_value'),
+                                ('eapi_username', 'my_config_value'),
+                                ('eapi_password', 'my_config_value'),
+                                ('region_name', 'my_config_value'),
+                                ('api_type', 'my_config_value'),
+                            ],
+                        },
+                    },
+                },
+            }
+        )

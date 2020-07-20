@@ -5,8 +5,7 @@ gate_bundles:
 - xenial-queens
 - bionic-queens
 
-# NOTE(lourot): on bionic-rocky our special neutron-api fork for Arista fails
-# to start with:
+# NOTE(lourot): on bionic-rocky neutron-server fails to start with:
 # neutron.plugins.ml2.managers The following mechanism drivers were not found: set(['hyperv'])
 # Disabling for now. To be investigated.
 #- bionic-rocky
