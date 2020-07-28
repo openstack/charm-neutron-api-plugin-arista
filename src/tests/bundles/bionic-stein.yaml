@@ -1,7 +1,7 @@
 variables:
-  openstack-origin: &openstack-origin cloud:xenial-queens
+  openstack-origin: &openstack-origin cloud:bionic-stein
 
-series: &series xenial
+series: &series bionic
 
 applications:
 
@@ -64,6 +64,9 @@ applications:
     charm: ../../../neutron-api-plugin-arista
     num_units: 0
     options:
+      # Contains fix https://review.opendev.org/743740
+      source: ppa:aurelien-lourot/arista-stein
+
       # Fake IP, will be set to arista-virt-test-fixture's IP address on test
       # setup:
       eapi-host: 192.0.2.42

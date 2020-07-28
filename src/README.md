@@ -4,11 +4,8 @@ This subordinate charm provides the
 [Arista ML2 Plugin][python-networking-arista] support to the
 [OpenStack Neutron API service][charm-neutron-api].
 
-> **Notes**:
-> * For now the neutron-api-plugin-arista charm is only supported up to
->   OpenStack Queens.
-> * For upgrading from earlier prototypes of this charm see
->   [Upgrading to stable charm][upgrading-to-stable].
+> **Note**: For upgrading from earlier prototypes of this charm see
+> [Upgrading to stable charm][upgrading-to-stable].
 
 When this charm is related to the neutron-api charm it will install the Arista
 Neutron packages on each neutron-api unit in the region and supply the desired

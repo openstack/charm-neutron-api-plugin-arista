@@ -1,14 +1,21 @@
-series: bionic
+variables:
+  openstack-origin: &openstack-origin distro
+
+series: &series bionic
 
 applications:
 
   glance:
     charm: cs:~openstack-charmers-next/glance
     num_units: 1
+    options:
+      openstack-origin: *openstack-origin
 
   keystone:
     charm: cs:~openstack-charmers-next/keystone
     num_units: 1
+    options:
+      openstack-origin: *openstack-origin
 
   mysql:
     charm: cs:~openstack-charmers-next/percona-cluster
@@ -18,6 +25,7 @@ applications:
     charm: cs:~openstack-charmers-next/neutron-api
     num_units: 1
     options:
+      openstack-origin: *openstack-origin
       enable-ml2-dns: False
       flat-network-providers: default
       vlan-ranges: default:1000:3000
@@ -49,6 +57,7 @@ applications:
     charm: cs:~openstack-charmers-next/nova-cloud-controller
     num_units: 1
     options:
+      openstack-origin: *openstack-origin
       network-manager: Neutron
 
   neutron-api-plugin-arista:
@@ -67,6 +76,7 @@ applications:
     num_units: 2
     constraints: mem=4G cores=4
     options:
+      openstack-origin: *openstack-origin
       config-flags: default_ephemeral_format=ext4
       enable-live-migration: true
       enable-resize: true
@@ -74,10 +84,6 @@ applications:
 
   rabbitmq-server:
     charm: cs:~openstack-charmers-next/rabbitmq-server
-    num_units: 1
-
-  openstack-dashboard:
-    charm: cs:openstack-dashboard
     num_units: 1
 
   lldpd:
@@ -131,9 +137,5 @@ relations:
   - neutron-api-plugin-arista
 - - neutron-api:neutron-plugin-api-subordinate
   - neutron-api-plugin-arista:neutron-plugin-api-subordinate
-- - openstack-dashboard
-  - mysql
-- - openstack-dashboard:identity-service
-  - keystone:identity-service
 - - lldpd
   - nova-compute

@@ -25,7 +25,10 @@ from charms_openstack.charm import (
 )
 
 
-use_defaults('update-status')
+use_defaults(
+    'charm.default-select-release',
+    'update-status',
+)
 
 
 @reactive.when_not('arista-package.installed')

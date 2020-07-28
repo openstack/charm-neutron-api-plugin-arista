@@ -1,14 +1,12 @@
 charm_name: neutron-api-plugin-arista
 smoke_bundles:
-- bionic-queens
+- bionic-train
 gate_bundles:
 - xenial-queens
 - bionic-queens
-
-# NOTE(lourot): on bionic-rocky neutron-server fails to start with:
-# neutron.plugins.ml2.managers The following mechanism drivers were not found: set(['hyperv'])
-# Disabling for now. To be investigated.
-#- bionic-rocky
+- bionic-rocky
+- bionic-stein
+- bionic-train
 
 before_deploy:
 - zaza.openstack.charm_tests.neutron_arista.setup.download_arista_image

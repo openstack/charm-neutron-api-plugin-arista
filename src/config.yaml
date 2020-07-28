@@ -4,10 +4,6 @@ options:
     type: string
     description: |
       Repository from which to install. Ex: ppa:canonical-arista/stable
-  arista-version:
-    default: '2017.2.2'
-    type: string
-    description: Arista Driver version
   eapi-host:
     default:
     type: string
