@@ -52,6 +52,7 @@ applications:
     options:
       manage-neutron-plugin-legacy-mode: False
       # No need for `enable-arista` anymore
+      [...]
 
   neutron-api-plugin-arista:
     charm: cs:~openstack-charmers-next/neutron-api-plugin-arista-2
