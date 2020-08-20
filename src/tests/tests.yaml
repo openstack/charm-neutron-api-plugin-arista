@@ -7,6 +7,7 @@ gate_bundles:
 - bionic-rocky
 - bionic-stein
 - bionic-train
+- bionic-ussuri
 
 before_deploy:
 - zaza.openstack.charm_tests.neutron_arista.setup.download_arista_image
