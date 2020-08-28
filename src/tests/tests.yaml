@@ -9,6 +9,7 @@ gate_bundles:
 - bionic-train
 - bionic-ussuri
 - focal-ussuri
+- focal-victoria
 
 before_deploy:
 - zaza.openstack.charm_tests.neutron_arista.setup.download_arista_image
