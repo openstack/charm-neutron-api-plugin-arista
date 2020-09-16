@@ -64,9 +64,6 @@ applications:
     charm: ../../../neutron-api-plugin-arista
     num_units: 0
     options:
-      # Contains fix https://review.opendev.org/743740
-      source: ppa:aurelien-lourot/arista-stein
-
       # Fake IP, will be set to arista-virt-test-fixture's IP address on test
       # setup:
       eapi-host: 192.0.2.42
@@ -98,6 +95,7 @@ applications:
   arista-virt-test-fixture:
     charm: cs:~openstack-charmers-next/arista-virt-test-fixture
     num_units: 1
+    constraints: mem=4G
 
 relations:
 - - nova-compute:amqp
