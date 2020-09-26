@@ -15,8 +15,10 @@
 import sys
 import mock
 
+
 sys.path.append('src')
 sys.path.append('src/lib')
+
 
 # Mock out charmhelpers so that we can test without it.
 import charms_openstack.test_mocks  # noqa
@@ -31,6 +33,7 @@ def _fake_retry(num_retries, base_delay=0, exc_type=Exception):
             return f(*args, **kwargs)
         return _retry_on_exception_inner_2
     return _retry_on_exception_inner_1
+
 
 mock.patch(
     'charmhelpers.core.decorators.retry_on_exception',
