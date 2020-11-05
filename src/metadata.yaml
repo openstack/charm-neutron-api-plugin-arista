@@ -1,6 +1,6 @@
 name: neutron-api-plugin-arista
 summary: Arista ML2 plugin support for Neutron-API
-maintainer: Michael Skalka <Michael.Skalka@canonical.com>
+maintainer: OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
 description: |
 
 tags:
@@ -11,6 +11,7 @@ series:
   - xenial
   - bionic
   - focal
+  - groovy
 provides:
   neutron-plugin-api-subordinate:
     interface: neutron-plugin-api-subordinate
