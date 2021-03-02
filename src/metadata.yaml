@@ -4,14 +4,15 @@ maintainer: OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
 description: |
 
 tags:
-  - misc
-  - networking
+- misc
+- networking
 subordinate: true
 series:
-  - xenial
-  - bionic
-  - focal
-  - groovy
+- xenial
+- bionic
+- focal
+- groovy
+- hirsute
 provides:
   neutron-plugin-api-subordinate:
     interface: neutron-plugin-api-subordinate
