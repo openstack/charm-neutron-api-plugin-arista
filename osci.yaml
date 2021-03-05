@@ -9,6 +9,7 @@
       - bionic-ussuri
       - focal-ussuri
       - focal-victoria
+      - focal-wallaby
       - groovy-victoria
     vars:
       needs_charm_build: true
