@@ -77,8 +77,7 @@ applications:
     charm: ../../../neutron-api-plugin-arista
     num_units: 0
     options:
-      # Contains fix for lp:1889396
-      source: focal-proposed
+      source: *openstack-origin
 
       # Fake IP, will be set to arista-virt-test-fixture's IP address on test
       # setup:
