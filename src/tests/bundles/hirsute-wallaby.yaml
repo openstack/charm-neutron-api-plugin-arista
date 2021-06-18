@@ -114,6 +114,10 @@ applications:
       short-name: true
 
   arista-virt-test-fixture:
+    # NOTE(lourot): workaround - this charm doesn't work on hirsute+ yet
+    # see https://github.com/openstack-charmers/charm-arista-virt-test-fixture/issues/11
+    series: groovy
+
     charm: cs:~openstack-charmers-next/arista-virt-test-fixture
     num_units: 1
     constraints: mem=4G
