@@ -128,7 +128,7 @@ applications:
       short-name: true
 
   arista-virt-test-fixture:
-    charm: cs:~openstack-charmers-next/arista-virt-test-ixture
+    charm: cs:~openstack-charmers-next/arista-virt-test-fixture
     num_units: 1
     constraints: mem=4G
 
