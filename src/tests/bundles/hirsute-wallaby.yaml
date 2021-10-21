@@ -7,40 +7,32 @@ applications:
 
   keystone-mysql-router:
     charm: cs:~openstack-charmers/mysql-router
-    channel: candidate
   nova-mysql-router:
     charm: cs:~openstack-charmers/mysql-router
-    channel: candidate
   glance-mysql-router:
     charm: cs:~openstack-charmers/mysql-router
-    channel: candidate
   neutron-mysql-router:
     charm: cs:~openstack-charmers/mysql-router
-    channel: candidate
   placement-mysql-router:
     charm: cs:~openstack-charmers/mysql-router
-    channel: candidate
   mysql-innodb-cluster:
     constraints: mem=3072M
     charm: cs:~openstack-charmers/mysql-innodb-cluster
     num_units: 3
     options:
       source: *openstack-origin
-    channel: candidate
 
   glance:
     charm: cs:~openstack-charmers/glance
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: candidate
 
   keystone:
     charm: cs:~openstack-charmers/keystone
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: candidate
 
   neutron-api:
     charm: cs:~openstack-charmers/neutron-api
@@ -63,7 +55,6 @@ applications:
       reverse-dns-lookup: False
       dns-domain:
       manage-neutron-plugin-legacy-mode: False
-    channel: candidate
 
   neutron-openvswitch:
     charm: cs:~openstack-charmers/neutron-openvswitch
@@ -74,7 +65,6 @@ applications:
       enable-local-dhcp-and-metadata: True
       bridge-mappings: default:br-data
       data-port: ens7
-    channel: candidate
 
   nova-cloud-controller:
     charm: cs:~openstack-charmers/nova-cloud-controller
@@ -82,7 +72,6 @@ applications:
     options:
       openstack-origin: *openstack-origin
       network-manager: Neutron
-    channel: candidate
 
   neutron-api-plugin-arista:
     charm: ../../../neutron-api-plugin-arista
@@ -102,7 +91,6 @@ applications:
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: candidate
 
   nova-compute:
     charm: cs:~openstack-charmers/nova-compute
@@ -114,12 +102,10 @@ applications:
       enable-live-migration: true
       enable-resize: true
       migration-auth-type: ssh
-    channel: candidate
 
   rabbitmq-server:
     charm: cs:~openstack-charmers/rabbitmq-server
     num_units: 1
-    channel: candidate
 
   lldpd:
     charm: cs:lldpd
