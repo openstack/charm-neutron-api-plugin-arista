@@ -51,3 +51,13 @@ class RockyNeutronAristaCharm(BaseNeutronAristaCharm):
 
     # List of packages to install for this charm
     packages = ['python3-networking-arista']
+
+
+class WallabyNeutronAristaCharm(RockyNeutronAristaCharm):
+    """The Wallaby incarnation of the charm."""
+    abstract_class = False
+
+    release = 'wallaby'
+
+    # List of packages to install for this charm
+    packages = ['python3-networking-arista', 'openstack-release']
