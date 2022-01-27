@@ -6,36 +6,44 @@ series: &series focal
 applications:
 
   keystone-mysql-router:
-    charm: cs:~openstack-charmers-next/mysql-router
+    charm: ch:mysql-router
+    channel: latest/edge
   nova-mysql-router:
-    charm: cs:~openstack-charmers-next/mysql-router
+    charm: ch:mysql-router
+    channel: latest/edge
   glance-mysql-router:
-    charm: cs:~openstack-charmers-next/mysql-router
+    charm: ch:mysql-router
+    channel: latest/edge
   neutron-mysql-router:
-    charm: cs:~openstack-charmers-next/mysql-router
+    charm: ch:mysql-router
+    channel: latest/edge
   placement-mysql-router:
-    charm: cs:~openstack-charmers-next/mysql-router
+    charm: ch:mysql-router
+    channel: latest/edge
   mysql-innodb-cluster:
     constraints: mem=3072M
-    charm: cs:~openstack-charmers-next/mysql-innodb-cluster
+    charm: ch:mysql-innodb-cluster
     num_units: 3
     options:
       source: *openstack-origin
+    channel: latest/edge
 
   glance:
-    charm: cs:~openstack-charmers-next/glance
+    charm: ch:glance
     num_units: 1
     options:
       openstack-origin: *openstack-origin
+    channel: latest/edge
 
   keystone:
-    charm: cs:~openstack-charmers-next/keystone
+    charm: ch:keystone
     num_units: 1
     options:
       openstack-origin: *openstack-origin
+    channel: latest/edge
 
   neutron-api:
-    charm: cs:~openstack-charmers-next/neutron-api
+    charm: ch:neutron-api
     num_units: 1
     options:
       openstack-origin: *openstack-origin
@@ -55,9 +63,10 @@ applications:
       reverse-dns-lookup: False
       dns-domain:
       manage-neutron-plugin-legacy-mode: False
+    channel: latest/edge
 
   neutron-openvswitch:
-    charm: cs:~openstack-charmers-next/neutron-openvswitch
+    charm: ch:neutron-openvswitch
     num_units: 0
     options:
       prevent-arp-spoofing: True
@@ -65,13 +74,15 @@ applications:
       enable-local-dhcp-and-metadata: True
       bridge-mappings: default:br-data
       data-port: ens7
+    channel: latest/edge
 
   nova-cloud-controller:
-    charm: cs:~openstack-charmers-next/nova-cloud-controller
+    charm: ch:nova-cloud-controller
     num_units: 1
     options:
       openstack-origin: *openstack-origin
       network-manager: Neutron
+    channel: latest/edge
 
   neutron-api-plugin-arista:
     charm: ../../../neutron-api-plugin-arista
@@ -87,13 +98,14 @@ applications:
       api-type: EAPI
 
   placement:
-    charm: cs:~openstack-charmers-next/placement
+    charm: ch:placement
     num_units: 1
     options:
       openstack-origin: *openstack-origin
+    channel: latest/edge
 
   nova-compute:
-    charm: cs:~openstack-charmers-next/nova-compute
+    charm: ch:nova-compute
     num_units: 2
     constraints: mem=4G cores=4
     options:
@@ -102,10 +114,12 @@ applications:
       enable-live-migration: true
       enable-resize: true
       migration-auth-type: ssh
+    channel: latest/edge
 
   rabbitmq-server:
-    charm: cs:~openstack-charmers-next/rabbitmq-server
+    charm: ch:rabbitmq-server
     num_units: 1
+    channel: latest/edge
 
   lldpd:
     charm: cs:lldpd
