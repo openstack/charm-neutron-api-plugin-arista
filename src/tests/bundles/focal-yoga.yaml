@@ -1,6 +1,8 @@
 variables:
   openstack-origin: &openstack-origin cloud:focal-yoga
 
+local_overlay_enabled: False
+
 series: &series focal
 
 applications:
@@ -85,7 +87,7 @@ applications:
     channel: latest/edge
 
   neutron-api-plugin-arista:
-    charm: ../../../neutron-api-plugin-arista
+    charm: ../../../neutron-api-plugin-arista.charm
     num_units: 0
     options:
       source: *openstack-origin

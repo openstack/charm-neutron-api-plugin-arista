@@ -1,6 +1,8 @@
 variables:
   openstack-origin: &openstack-origin distro
 
+local_overlay_enabled: False
+
 series: &series jammy
 
 applications:
@@ -85,7 +87,7 @@ applications:
     channel: latest/edge
 
   neutron-api-plugin-arista:
-    charm: ../../../neutron-api-plugin-arista
+    charm: ../../../neutron-api-plugin-arista.charm
     num_units: 0
     options:
       source: *openstack-origin
