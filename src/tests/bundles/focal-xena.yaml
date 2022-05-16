@@ -9,26 +9,26 @@ applications:
 
   keystone-mysql-router:
     charm: ch:mysql-router
-    channel: 8.0.19/edge
+    channel: 8.0/edge
   nova-mysql-router:
     charm: ch:mysql-router
-    channel: 8.0.19/edge
+    channel: 8.0/edge
   glance-mysql-router:
     charm: ch:mysql-router
-    channel: 8.0.19/edge
+    channel: 8.0/edge
   neutron-mysql-router:
     charm: ch:mysql-router
-    channel: 8.0.19/edge
+    channel: 8.0/edge
   placement-mysql-router:
     charm: ch:mysql-router
-    channel: 8.0.19/edge
+    channel: 8.0/edge
   mysql-innodb-cluster:
     constraints: mem=3072M
     charm: ch:mysql-innodb-cluster
     num_units: 3
     options:
       source: *openstack-origin
-    channel: 8.0.19/edge
+    channel: 8.0/edge
 
   glance:
     charm: ch:glance
