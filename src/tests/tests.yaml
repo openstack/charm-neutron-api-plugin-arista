@@ -1,24 +1,13 @@
 charm_name: neutron-api-plugin-arista
 
 smoke_bundles:
-- bionic-train
+- focal-victoria
 
 gate_bundles:
-- bionic-queens
-- bionic-stein
-- bionic-train
-- bionic-ussuri
 - focal-ussuri
 - focal-victoria
-- focal-wallaby
-- hirsute-wallaby
 
-dev_bundles:
-- xenial-queens
-- bionic-rocky
-- focal-xena
-- groovy-victoria
-- impish-xena
+dev_bundles: []
 
 before_deploy:
 - zaza.openstack.charm_tests.neutron_arista.setup.download_arista_image
@@ -30,6 +19,4 @@ tests:
 - zaza.openstack.charm_tests.neutron_arista.tests.NeutronCreateAristaNetworkTest
 
 tests_options:
-  force_deploy:
-    - groovy-victoria
-    - impish-xena
+  force_deploy: []

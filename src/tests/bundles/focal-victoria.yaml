@@ -1,3 +1,5 @@
+local_overlay_enabled: False
+
 variables:
   openstack-origin: &openstack-origin cloud:focal-victoria
 
@@ -6,36 +8,44 @@ series: &series focal
 applications:
 
   keystone-mysql-router:
-    charm: cs:~openstack-charmers/mysql-router
+    charm: ch:mysql-router
+    channel: 8.0/edge
   nova-mysql-router:
-    charm: cs:~openstack-charmers/mysql-router
+    charm: ch:mysql-router
+    channel: 8.0/edge
   glance-mysql-router:
-    charm: cs:~openstack-charmers/mysql-router
+    charm: ch:mysql-router
+    channel: 8.0/edge
   neutron-mysql-router:
-    charm: cs:~openstack-charmers/mysql-router
+    charm: ch:mysql-router
+    channel: 8.0/edge
   placement-mysql-router:
-    charm: cs:~openstack-charmers/mysql-router
+    charm: ch:mysql-router
+    channel: 8.0/edge
   mysql-innodb-cluster:
     constraints: mem=3072M
-    charm: cs:~openstack-charmers/mysql-innodb-cluster
+    charm: ch:mysql-innodb-cluster
     num_units: 3
     options:
       source: *openstack-origin
+    channel: 8.0/edge
 
   glance:
-    charm: cs:~openstack-charmers/glance
+    charm: ch:glance
     num_units: 1
     options:
       openstack-origin: *openstack-origin
+    channel: victoria/edge
 
   keystone:
-    charm: cs:~openstack-charmers/keystone
+    charm: ch:keystone
     num_units: 1
     options:
       openstack-origin: *openstack-origin
+    channel: victoria/edge
 
   neutron-api:
-    charm: cs:~openstack-charmers/neutron-api
+    charm: ch:neutron-api
     num_units: 1
     options:
       openstack-origin: *openstack-origin
@@ -55,9 +65,10 @@ applications:
       reverse-dns-lookup: False
       dns-domain:
       manage-neutron-plugin-legacy-mode: False
+    channel: victoria/edge
 
   neutron-openvswitch:
-    charm: cs:~openstack-charmers/neutron-openvswitch
+    charm: ch:neutron-openvswitch
     num_units: 0
     options:
       prevent-arp-spoofing: True
@@ -65,16 +76,18 @@ applications:
       enable-local-dhcp-and-metadata: True
       bridge-mappings: default:br-data
       data-port: ens7
+    channel: victoria/edge
 
   nova-cloud-controller:
-    charm: cs:~openstack-charmers/nova-cloud-controller
+    charm: ch:nova-cloud-controller
     num_units: 1
     options:
       openstack-origin: *openstack-origin
       network-manager: Neutron
+    channel: victoria/edge
 
   neutron-api-plugin-arista:
-    charm: ../../../neutron-api-plugin-arista
+    charm: ../../../neutron-api-plugin-arista.charm
     num_units: 0
     options:
       source: *openstack-origin
@@ -87,13 +100,14 @@ applications:
       api-type: EAPI
 
   placement:
-    charm: cs:~openstack-charmers/placement
+    charm: ch:placement
     num_units: 1
     options:
       openstack-origin: *openstack-origin
+    channel: victoria/edge
 
   nova-compute:
-    charm: cs:~openstack-charmers/nova-compute
+    charm: ch:nova-compute
     num_units: 2
     constraints: mem=4G cores=4
     options:
@@ -102,10 +116,12 @@ applications:
       enable-live-migration: true
       enable-resize: true
       migration-auth-type: ssh
+    channel: victoria/edge
 
   rabbitmq-server:
-    charm: cs:~openstack-charmers/rabbitmq-server
+    charm: ch:rabbitmq-server
     num_units: 1
+    channel: 3.8/edge
 
   lldpd:
     charm: cs:lldpd
