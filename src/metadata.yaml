@@ -2,17 +2,14 @@ name: neutron-api-plugin-arista
 summary: Arista ML2 plugin support for Neutron-API
 maintainer: OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
 description: |
+  The Arista ML2 plugin suport for the neutron-api charm. This is a subordinate
+  charm.
 tags:
 - misc
 - networking
 subordinate: true
 series:
-- xenial
 - bionic
-- focal
-- groovy
-- hirsute
-- impish
 provides:
   neutron-plugin-api-subordinate:
     interface: neutron-plugin-api-subordinate
