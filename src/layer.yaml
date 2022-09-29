@@ -3,4 +3,5 @@ includes:
 - 'interface:neutron-plugin-api-subordinate'
 options:
   basic:
-    use_venv: False
+    use_venv: True
+    include_system_packages: False
