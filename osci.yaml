@@ -1,10 +1,21 @@
 - project:
     templates:
-      - charm-unit-jobs-py38
       - charm-unit-jobs-py310
-      - charm-xena-functional-jobs
-      - charm-yoga-functional-jobs
+      # Note(coreycb): Switch to non-voting until charm-lldpd supports jammy:
+      # https://bugs.launchpad.net/charm-neutron-api-plugin-arista/+bug/2003771
+      # - charm-functional-jobs
+    check:
+      jobs:
+      - jammy-zed:
+          voting: false
+      - kinetic-zed:
+          voting: false
+      - jammy-antelope:
+          voting: false
+      - lunar-antelope:
+          voting: false
     vars:
       needs_charm_build: true
       charm_build_name: neutron-api-plugin-arista
       build_type: charmcraft
+      charmcraft_channel: 2.1/stable
