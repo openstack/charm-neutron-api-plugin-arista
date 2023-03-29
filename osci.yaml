@@ -8,8 +8,6 @@
       jobs:
       - jammy-zed:
           voting: false
-      - kinetic-zed:
-          voting: false
       - jammy-antelope:
           voting: false
       - lunar-antelope:
