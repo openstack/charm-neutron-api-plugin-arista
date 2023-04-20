@@ -9,40 +9,40 @@ applications:
 
   keystone-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   nova-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   glance-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   neutron-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   placement-mysql-router:
     charm: ch:mysql-router
-    channel: latest/edge
+    channel: 8.0/edge
   mysql-innodb-cluster:
     constraints: mem=3072M
     charm: ch:mysql-innodb-cluster
     num_units: 3
     options:
-      source: *openstack-origin
-    channel: latest/edge
+      source: distro
+    channel: 8.0/edge
 
   glance:
     charm: ch:glance
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: latest/edge
+    channel: 2023.1/edge
 
   keystone:
     charm: ch:keystone
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: latest/edge
+    channel: 2023.1/edge
 
   neutron-api:
     charm: ch:neutron-api
@@ -65,7 +65,7 @@ applications:
       reverse-dns-lookup: False
       dns-domain:
       manage-neutron-plugin-legacy-mode: False
-    channel: latest/edge
+    channel: 2023.1/edge
 
   neutron-openvswitch:
     charm: ch:neutron-openvswitch
@@ -76,7 +76,7 @@ applications:
       enable-local-dhcp-and-metadata: True
       bridge-mappings: default:br-data
       data-port: ens7
-    channel: latest/edge
+    channel: 2023.1/edge
 
   nova-cloud-controller:
     charm: ch:nova-cloud-controller
@@ -84,7 +84,7 @@ applications:
     options:
       openstack-origin: *openstack-origin
       network-manager: Neutron
-    channel: latest/edge
+    channel: 2023.1/edge
 
   neutron-api-plugin-arista:
     charm: ../../../neutron-api-plugin-arista.charm
@@ -104,7 +104,7 @@ applications:
     num_units: 1
     options:
       openstack-origin: *openstack-origin
-    channel: latest/edge
+    channel: 2023.1/edge
 
   nova-compute:
     charm: ch:nova-compute
@@ -116,12 +116,12 @@ applications:
       enable-live-migration: true
       enable-resize: true
       migration-auth-type: ssh
-    channel: latest/edge
+    channel: 2023.1/edge
 
   rabbitmq-server:
     charm: ch:rabbitmq-server
     num_units: 1
-    channel: latest/edge
+    channel: 3.9/edge
 
   lldpd:
     charm: cs:lldpd
