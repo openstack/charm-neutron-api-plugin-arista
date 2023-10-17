@@ -10,10 +10,8 @@
           voting: false
       - jammy-antelope:
           voting: false
-      - lunar-antelope:
-          voting: false
     vars:
       needs_charm_build: true
       charm_build_name: neutron-api-plugin-arista
       build_type: charmcraft
-      charmcraft_channel: 2.1/stable
+      charmcraft_channel: 2.x/stable
