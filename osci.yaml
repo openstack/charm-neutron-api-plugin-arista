@@ -6,11 +6,11 @@
       # - charm-functional-jobs
     check:
       jobs:
-      - jammy-zed:
+      - jammy-antelope
+      - jammy-bobcat
+      - jammy-caracal:
           voting: false
-      - jammy-antelope:
-          voting: false
-      - lunar-antelope:
+      - noble-caracal:
           voting: false
     vars:
       needs_charm_build: true
