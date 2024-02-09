@@ -1,26 +1,22 @@
 charm_name: neutron-api-plugin-arista
 
 smoke_bundles:
-  - jammy-zed
-
+  - jammy-caracal
 gate_bundles:
-  - jammy-zed
-
-dev_bundles:
   - jammy-antelope
-  - lunar-antelope
-
+  - jammy-bobcat
+  - jammy-caracal
+dev_bundles:
+  - noble-caracal
 before_deploy:
-- zaza.openstack.charm_tests.neutron_arista.setup.download_arista_image
+  - zaza.openstack.charm_tests.neutron_arista.setup.download_arista_image
 
 configure:
-- zaza.openstack.charm_tests.neutron_arista.setup.test_fixture
+  - zaza.openstack.charm_tests.neutron_arista.setup.test_fixture
 
 tests:
-- zaza.openstack.charm_tests.neutron_arista.tests.NeutronCreateAristaNetworkTest
+  - zaza.openstack.charm_tests.neutron_arista.tests.NeutronCreateAristaNetworkTest
 
 tests_options:
   force_deploy:
-    - jammy-zed
-    - jammy-antelope
-    - lunar-antelope
+    - noble-caracal
