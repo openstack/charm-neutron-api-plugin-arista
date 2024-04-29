@@ -1,5 +1,5 @@
 variables:
-  openstack-origin: &openstack-origin cloud:jammy-antelope
+  openstack-origin: &openstack-origin cloud:jammy-caracal
 
 local_overlay_enabled: False
 
@@ -124,10 +124,11 @@ applications:
     channel: latest/edge
 
   lldpd:
-    charm: cs:lldpd
+    charm: ch:lldpd
     options:
       interfaces-regex: 'en*'
       short-name: true
+    channel: latest/edge
 
   arista-virt-test-fixture:
     series: focal
