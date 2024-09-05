@@ -8,9 +8,6 @@ tags:
 - misc
 - networking
 subordinate: true
-series:
-- jammy
-- kinetic
 provides:
   neutron-plugin-api-subordinate:
     interface: neutron-plugin-api-subordinate
