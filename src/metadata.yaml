@@ -10,7 +10,6 @@ tags:
 subordinate: true
 series:
 - jammy
-- kinetic
 - noble
 provides:
   neutron-plugin-api-subordinate:
